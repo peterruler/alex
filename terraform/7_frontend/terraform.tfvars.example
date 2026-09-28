@@ -1,0 +1,11 @@
+# Part 7: Frontend & API Configuration
+
+# AWS region for deployment
+aws_region = "us-east-1"
+
+# Clerk configuration for JWT validation
+# Get these from your Clerk dashboard
+# The JWKS URL is: https://[your-instance].clerk.accounts.dev/.well-known/jwks.json
+# The issuer is: https://[your-instance].clerk.accounts.dev
+clerk_jwks_url = "https://engaging-feline-80.clerk.accounts.dev/.well-known/jwks.json"
+clerk_issuer   = "https://engaging-feline-80.clerk.accounts.dev"

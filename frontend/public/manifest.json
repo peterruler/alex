@@ -1,0 +1,23 @@
+{
+  "name": "Alex AI Financial Advisor",
+  "short_name": "Alex AI",
+  "description": "AI-powered financial planning and portfolio management",
+  "theme_color": "#209DD7",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/dashboard",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon.ico",
+      "sizes": "16x16 32x32 48x48",
+      "type": "image/x-icon"
+    }
+  ]
+}

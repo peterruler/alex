@@ -1,0 +1,13 @@
+# Part 5: Database Configuration
+# Copy this file to terraform.tfvars and update with your values
+
+# Your AWS region for Aurora database
+# Should match your main infrastructure region
+aws_region = "us-east-1"
+
+# Aurora Serverless v2 scaling configuration
+# Minimum capacity in ACUs (0.5 = ~$43/month minimum)
+min_capacity = 0.5
+
+# Maximum capacity in ACUs (1.0 keeps costs low for development)
+max_capacity = 1.0

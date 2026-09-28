@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+test_api.py
+test_local.py
+run_local.sh
+*.md
+.git/
+.gitignore
