@@ -15,7 +15,7 @@ output "aurora_secret_arn" {
 
 output "database_name" {
   description = "Name of the database"
-  value       = aws_rds_cluster.aurora.database_name
+  value       = "alex"
 }
 
 output "lambda_role_arn" {
@@ -36,7 +36,7 @@ output "setup_instructions" {
     
     Database Details:
     - Cluster: ${aws_rds_cluster.aurora.cluster_identifier}
-    - Database: ${aws_rds_cluster.aurora.database_name}
+    - Database: alex
     - Data API: Enabled
     
     Add the following to your .env file:

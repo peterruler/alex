@@ -52,7 +52,7 @@ resource "random_id" "suffix" {
 resource "aws_secretsmanager_secret_version" "db_credentials" {
   secret_id = aws_secretsmanager_secret.db_credentials.id
   secret_string = jsonencode({
-    username = "alexadmin"
+    username = "postgres"
     password = random_password.db_password.result
   })
 }
@@ -111,9 +111,7 @@ resource "aws_rds_cluster" "aurora" {
   cluster_identifier     = "alex-aurora-cluster"
   engine                 = "aurora-postgresql"
   engine_mode            = "provisioned"
-  engine_version         = "15.12"
-  database_name          = "alex"
-  master_username        = "alexadmin"
+  master_username        = "postgres"
   master_password        = random_password.db_password.result
   
   # Serverless v2 scaling configuration
@@ -123,14 +121,14 @@ resource "aws_rds_cluster" "aurora" {
   }
   
   # Enable Data API
-  enable_http_endpoint = true
+  enable_http_endpoint                  = true
+  iam_database_authentication_enabled   = true
   
-  # Networking
-  db_subnet_group_name   = aws_db_subnet_group.aurora.name
-  vpc_security_group_ids = [aws_security_group.aurora.id]
+  # Free Plan Express clusters use internet-gateway networking.
+  # DB subnet groups and VPC security groups cannot be attached.
   
   # Backup and maintenance
-  backup_retention_period   = 7
+  backup_retention_period   = 1
   preferred_backup_window   = "03:00-04:00"
   preferred_maintenance_window = "sun:04:00-sun:05:00"
   
@@ -146,7 +144,7 @@ resource "aws_rds_cluster" "aurora" {
 
 # Aurora Serverless v2 Instance
 resource "aws_rds_cluster_instance" "aurora" {
-  identifier          = "alex-aurora-instance-1"
+  identifier          = "alex-aurora-cluster-instance-1"
   cluster_identifier  = aws_rds_cluster.aurora.id
   instance_class      = "db.serverless"
   engine              = aws_rds_cluster.aurora.engine

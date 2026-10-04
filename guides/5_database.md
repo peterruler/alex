@@ -109,6 +109,8 @@ Since Guide 4, we need additional AWS permissions for Aurora and related service
         "rds:ModifyDBCluster",
         "rds:ModifyDBInstance",
         "rds:ModifyDBSubnetGroup",
+        "rds:EnableHttpEndpoint",
+        "rds:EnableInternetAccessGateway",
         "rds:AddTagsToResource",
         "rds:ListTagsForResource",
         "rds:RemoveTagsFromResource",
@@ -225,6 +227,8 @@ max_capacity = 1.0        # Maximum ACUs (keep low for dev)
 ```
 
 Deploy the database:
+
+> **AWS Free Plan accounts:** Aurora creation requires Express Configuration. The Terraform AWS provider does not currently expose `WithExpressConfiguration`, so a normal first `terraform apply` cannot create the cluster. Create it once with `aws rds create-db-cluster --db-cluster-identifier alex-aurora-cluster --engine aurora-postgresql --with-express-configuration`, then import the generated resources with `terraform import aws_rds_cluster.aurora alex-aurora-cluster` and `terraform import aws_rds_cluster_instance.aurora alex-aurora-cluster-instance-1`. Paid Plan accounts can continue directly below.
 
 ```bash
 # Initialize Terraform (creates local state file)

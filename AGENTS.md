@@ -214,6 +214,7 @@ Before writing any code, check these common issues:
 - **Check**: Does `terraform.tfvars` exist? Are all required variables set?
 
 **AWS Region Mismatches**
+- Set the AWS CLI default region for this project: `aws configure set region us-east-1`
 - Bedrock models may only be available in specific regions
 - Nova Pro requires inference profiles
 - Cross-region resource access may need models to have been approved in Bedrock in multiple regions

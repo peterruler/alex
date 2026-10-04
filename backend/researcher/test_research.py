@@ -86,7 +86,7 @@ def test_research(topic=None):
         response = requests.post(
             research_url,
             json=payload,
-            timeout=180  # Give it 3 minutes for research
+            timeout=330,  # Match the 5-minute Lambda timeout plus network overhead
         )
         response.raise_for_status()
 

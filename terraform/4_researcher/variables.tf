@@ -41,7 +41,7 @@ variable "bedrock_region" {
 variable "researcher_model" {
   description = "Bedrock model identifier used by the researcher"
   type        = string
-  default     = "bedrock/global.openai.gpt-oss-120b-1:0"
+  default     = "bedrock/us.amazon.nova-pro-v1:0"
 }
 
 variable "mcp_logging" {
